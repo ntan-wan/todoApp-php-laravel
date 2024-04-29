@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    h1, h2, h3, h4, h5, h6, p, small, b, strong, body {
+        margin:0;
+        padding:0
+    }
+
+    * {
+        box-sizing:border-box;
+    }
+}
+
+@layer utilities {
+    .c-line-through {
+        text-decoration: line-through
+    }
+}

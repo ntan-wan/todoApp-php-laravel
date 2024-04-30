@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTaskRequest;
+use App\Http\Resources\TaskCollection;
 use App\Http\Resources\TaskResource;
 use Illuminate\Http\Request;
 use App\Models\Task;
@@ -11,21 +13,18 @@ class TaskController extends Controller
 
     // read
     public function index() {
-        $tasks = Task::all();
-        $res = ['status' => 'success', 'data' => $tasks];
+        $tasks = Task::latest()->get();
 
-        return TaskResource::collection($tasks);
+        return new TaskCollection($tasks);
     }
     public function show(Task $task) {
         return TaskResource::make($task);
     }
 
     // create
-    public function store(Request $request) {
-        $task = Task::create([
-            'description' => $request->description,
-            'is_done' => false
-        ]);
+    public function store(StoreTaskRequest $request) {
+
+        $task = Task::create($request->validated());
 
         return TaskResource::make($task);
     }

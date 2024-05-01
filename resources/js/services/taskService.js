@@ -5,7 +5,17 @@ export const fetchTasksData = async () => {
     return res;
 };
 
-export const createTask = async (data) => {
+export const addTask = async (data) => {
     const res = await callApi("post", "/tasks", data);
+    return res;
+};
+
+export const deleteTask = async (taskId) => {
+    const res = await callApi("delete", `/tasks/${taskId}`);
+    return res;
+};
+
+export const editTask = async (taskId, data) => {
+    const res = await callApi("put", `/tasks/${taskId}`, data);
     return res;
 };

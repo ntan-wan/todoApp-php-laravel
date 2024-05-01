@@ -17,6 +17,7 @@ class TaskFactory extends Factory
     public function definition(): array
     {
         return [
+            'name' =>fake()->name() ,
             'description' => fake()->sentence(),
             'is_done' => rand(0, 1)
         ];

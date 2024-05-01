@@ -3,3 +3,7 @@ export const clearObjData = (obj) => {
         obj[key] = "";
     }
 };
+
+export const capitalizeFirstLetter = (str) => {
+    return str.replace(/\b\w/g, (char) => char.toUpperCase());
+};

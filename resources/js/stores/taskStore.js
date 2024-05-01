@@ -5,7 +5,7 @@ import { useInitStore } from "@/js/composables/useInitStore";
 export const useTaskStore = defineStore("tasks", {
     state: () => ({
         tasks: null,
-        isAddingTask: false,
+        isLoading: false,
     }),
 
     getters: {
@@ -27,10 +27,28 @@ export const useTaskStore = defineStore("tasks", {
             const res = await taskService.fetchTasksData();
             this.tasks = res?.data.tasks;
         },
-        async createTask(data) {
-            this.isAddingTask = true;
-            const res = await taskService.createTask(data);
-            this.isAddingTask = false;
+        async addTask(data) {
+            this.isLoading = true;
+            const res = await taskService.addTask(data);
+            this.isLoading = false;
+        },
+        async deleteTask(taskId) {
+            this.isLoading = true;
+            const res = await taskService.deleteTask(taskId);
+            this.isLoading = false;
+        },
+        async editTask(taskId, data) {
+            this.isLoading = true;
+            const res = await taskService.editTask(taskId, data);
+            this.isLoading = false;
+        },
+        filterTasks(keyword) {
+            return this.tasks.filter((task) => {
+                const description = task.description.toLowerCase();
+                const name = task.name.toLowerCase();
+                const word = keyword.toLowerCase();
+                return description.includes(word) || name.includes(word);
+            });
         },
     },
 });

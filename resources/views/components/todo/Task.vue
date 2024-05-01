@@ -64,11 +64,11 @@ const onSubmitForm = async (action) => {
 };
 const onUpdateCheckBox = async () => {
     const taskId = props.pData.id;
-    const data = {
-        name: props.pData.name,
-        description: props.pData.description,
-        is_done: rData.isDone,
-    };
+    const data = {};
+    for (let prop in props.pData) {
+        data[prop] = props.pData[prop];
+    }
+    data.is_done = rData.isDone;
     await taskStore.editTask(taskId, data);
 };
 

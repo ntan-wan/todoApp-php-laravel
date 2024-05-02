@@ -85,6 +85,7 @@ onMounted(async () => {
                 </div>
             </form>
         </CustomDialog>
+
         <div class="flex justify-center p-4">
             <h1 class="flex items-center gap-3">
                 ToDo ({{ taskStore.tasks?.length ?? 0 }})

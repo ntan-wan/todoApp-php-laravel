@@ -59,4 +59,11 @@ class TaskController extends Controller
         $tasks = DB::table('tasks')->latest()->get();
         return view('pagesBlade.home', ['tasks' => $tasks]);
     }
+
+    /************/
+    /* livewire */
+    /************/
+    public function livewireIndex() {
+        return view('livewire.livewire-index');
+    }
 }

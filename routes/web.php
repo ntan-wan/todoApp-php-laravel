@@ -10,3 +10,5 @@ Route::get('/', function () {
 
 
 Route::get('/blade', [TaskController::class, 'bladeIndex']);
+
+Route::get('/livewire', [TaskController::class, 'livewireIndex']);

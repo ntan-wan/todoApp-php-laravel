@@ -17,4 +17,12 @@
     .c-line-through {
         text-decoration: line-through
     }
+
+    .c-title {
+        @apply font-bold text-xl
+    }
+
+    .c-description {
+        @apply text-neutral-500
+    }
 }

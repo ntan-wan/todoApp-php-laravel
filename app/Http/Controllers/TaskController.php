@@ -6,6 +6,7 @@ use App\Http\Requests\StoreTaskRequest;
 use App\Http\Resources\TaskCollection;
 use App\Http\Resources\TaskResource;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Task;
 
 class TaskController extends Controller
@@ -48,5 +49,14 @@ class TaskController extends Controller
         $task->update($request->validated());
 
         return TaskResource::make($task);
+    }
+    
+
+    /*********/
+    /* Blade */
+    /*********/
+    public function bladeIndex() {
+        $tasks = DB::table('tasks')->latest()->get();
+        return view('pagesBlade.home', ['tasks' => $tasks]);
     }
 }

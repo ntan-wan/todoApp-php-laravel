@@ -15,4 +15,4 @@ const app = createApp(App);
 app.use(pinia);
 app.use(PrimeVue);
 app.use(MotionPlugin);
-app.mount("#app");
+// app.mount("#app");
